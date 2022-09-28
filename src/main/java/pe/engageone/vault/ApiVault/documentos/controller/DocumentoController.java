@@ -48,7 +48,7 @@ public class DocumentoController {
 	}
 
 	@GetMapping("searchDocument/{columna}/{valor}")
-	public ResponseEntity<?> obtenerDocumento(@PathVariable String columna, @PathVariable String valor) {
+	public ResponseEntity<?> obtenerDocumento(@PathVariable String Columna, @PathVariable String Valor) {
 
 		Map<String, Object> response = new HashMap<>();
 		Documento doc = null;

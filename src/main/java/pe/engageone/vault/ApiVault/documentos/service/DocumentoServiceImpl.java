@@ -8,29 +8,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pe.engageone.vault.ApiVault.documentos.dao.DocumentoDao;
 import pe.engageone.vault.ApiVault.documentos.entity.Documento;
-
+import pe.engageone.vault.ApiVault.documentos.repository.IDocumentoRepository;
 
 @Service
 public class DocumentoServiceImpl implements IDocumentoService {
 
 	@Autowired
 	private DocumentoDao documentoDao;
-	
-	
-	
+
+	private IDocumentoRepository documentoRepository;
+
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Documento> findAll() {
-		return (List<Documento>)documentoDao.findAll();
+		return (List<Documento>) documentoDao.findAll();
 	}
 
-
-
-
-		
-	}
-
-
-	
-
-
+}
