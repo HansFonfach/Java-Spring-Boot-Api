@@ -16,12 +16,21 @@ public class DocumentoServiceImpl implements IDocumentoService {
 	@Autowired
 	private DocumentoDao documentoDao;
 	
+	
+	
 	@Override
 	@Transactional(readOnly=true)
 	public List<Documento> findAll() {
 		return (List<Documento>)documentoDao.findAll();
 	}
-	
+
+
+
+
+		
+	}
+
+
 	
 
-}
+
