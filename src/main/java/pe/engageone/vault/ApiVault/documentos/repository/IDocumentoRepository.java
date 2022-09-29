@@ -10,12 +10,12 @@ import org.springframework.stereotype.Repository;
 import pe.engageone.vault.ApiVault.documentos.entity.Documento;
 
 @Repository
-public interface IDocumentoRepository extends JpaRepository<Documento, Long>{
+public interface IDocumentoRepository extends JpaRepository<Documento, Long> {
+
+	 @Query(value = "SELECT d FROM documentos d WHERE :columna=:valor;", nativeQuery=true)
+	 List<Documento> findDocumentByColumnaAndValor(@Param("columna") String columna, @Param("valor") String valor );
 	
 	
-	@Query("SELECT * FROM Documentos WHERE :Columna LIKE :%Valor%")
-	List<Documento> findDocumentByColumnaAndValor(@Param("Columna") String Columna, @Param("Valor") String Valor  );
-
-
+	//List<Documento> Search(String Columna, String Valor);
 
 }

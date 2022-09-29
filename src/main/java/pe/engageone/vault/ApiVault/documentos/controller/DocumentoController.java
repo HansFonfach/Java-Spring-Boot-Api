@@ -12,11 +12,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import pe.engageone.vault.ApiVault.documentos.entity.Documento;
+import pe.engageone.vault.ApiVault.documentos.repository.IDocumentoRepository;
 import pe.engageone.vault.ApiVault.documentos.service.IDocumentoService;
 
 @RestController
@@ -24,6 +26,9 @@ public class DocumentoController {
 
 	@Autowired
 	private IDocumentoService documentoService;
+	
+	@Autowired 
+	private IDocumentoRepository docRepository;
 
 	@GetMapping("/listColumns")
 	@ResponseStatus(HttpStatus.OK)
@@ -48,7 +53,7 @@ public class DocumentoController {
 	}
 
 	@GetMapping("searchDocument/{columna}/{valor}")
-	public ResponseEntity<?> obtenerDocumento(@PathVariable String Columna, @PathVariable String Valor) {
+	public ResponseEntity<?> obtenerDocumento(@PathVariable String columna, @PathVariable String valor) {
 
 		Map<String, Object> response = new HashMap<>();
 		Documento doc = null;
@@ -83,6 +88,14 @@ public class DocumentoController {
 
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
+	}
+	
+
+	
+	@GetMapping("/documentos/{columna}/{valor}")
+	public ResponseEntity<List<Documento>> searchDocument(@RequestParam String columna, @RequestParam String valor){
+		
+		return new ResponseEntity<List<Documento>>(docRepository.findDocumentByColumnaAndValor(columna, valor), HttpStatus.OK);
 	}
 
 }

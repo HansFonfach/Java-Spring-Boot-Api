@@ -24,4 +24,5 @@ public class DocumentoServiceImpl implements IDocumentoService {
 		return (List<Documento>) documentoDao.findAll();
 	}
 
+
 }

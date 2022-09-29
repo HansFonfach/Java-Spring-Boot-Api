@@ -1,2 +1,0 @@
-INSERT INTO documentos (codigo_evento,cpointer_from,cpointer_to,description,doc_account,doc_address,doc_date,doc_invoice,doc_name,doc_pages,doc_sections,doc_type,email, fecha , file_block, file_name,file_size,int_modes,int_profile,int_resource)
-VALUES ('C0002', 'From bciperu.mailqa@ bci.cl_20211129113144', 'To guillermo.zuleta@ litiobyte.com_20211129113144', 'CartolaCronogramadePagosModificado(body)' )

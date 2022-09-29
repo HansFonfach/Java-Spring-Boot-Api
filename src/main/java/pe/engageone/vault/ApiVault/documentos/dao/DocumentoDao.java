@@ -6,7 +6,7 @@ import pe.engageone.vault.ApiVault.documentos.entity.Documento;
 
 public interface DocumentoDao extends CrudRepository<Documento, Long>{
 
-	 
+
 	
 	
 }
