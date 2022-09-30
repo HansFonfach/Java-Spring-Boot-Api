@@ -24,5 +24,25 @@ public class DocumentoServiceImpl implements IDocumentoService {
 		return (List<Documento>) documentoDao.findAll();
 	}
 
+	@Override
+	public List<Documento> findDocumentByColumnaAndValor(String columna, String valor) {
+		
+		List<Documento> documentos = documentoRepository.findDocumentByColumnaAndValor(columna, valor);
+		return documentos;
+	}
+
+
+
+	@Override
+	public List<Documento> buscarTodo() {
+		List<Documento> documentos = documentoRepository.buscarTodo();
+		return documentos;
+	}
+	
+	public DocumentoServiceImpl(IDocumentoRepository documentoRepository) {
+		super();
+		this.documentoRepository = documentoRepository;
+	}
+
 
 }

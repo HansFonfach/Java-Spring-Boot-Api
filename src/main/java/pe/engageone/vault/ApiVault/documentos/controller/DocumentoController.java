@@ -93,9 +93,38 @@ public class DocumentoController {
 
 	
 	@GetMapping("/documentos/{columna}/{valor}")
-	public ResponseEntity<List<Documento>> searchDocument(@RequestParam String columna, @RequestParam String valor){
+	public ResponseEntity<List<Documento>> searchDocument(@PathVariable String columna, @PathVariable String valor){
+		
+		
 		
 		return new ResponseEntity<List<Documento>>(docRepository.findDocumentByColumnaAndValor(columna, valor), HttpStatus.OK);
+			
+		
+			}
+	
+	
+	
+	@GetMapping("/listColumns2")
+	@ResponseStatus(HttpStatus.OK)
+	
+	public ResponseEntity<List<Documento>> listar2() throws InterruptedException {
+		List<Documento> documentos = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			documentos = docRepository.buscarTodo();
+		} catch (Exception ex) {
+			ex.getMessage();
+		}
+
+		if (docRepository.buscarTodo().isEmpty()) {
+
+			throw new IllegalStateException("No se encontraron documentos para listar");
+
+		}
+		return new ResponseEntity<List<Documento>>(documentos, HttpStatus.OK);
+
+		
 	}
 
 }

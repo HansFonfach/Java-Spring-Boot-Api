@@ -12,10 +12,15 @@ import pe.engageone.vault.ApiVault.documentos.entity.Documento;
 @Repository
 public interface IDocumentoRepository extends JpaRepository<Documento, Long> {
 
-	 @Query(value = "SELECT d FROM documentos d WHERE :columna=:valor;", nativeQuery=true)
+	 @Query(value = "SELECT * FROM documentos d WHERE :columna=:valor", nativeQuery=true)
 	 List<Documento> findDocumentByColumnaAndValor(@Param("columna") String columna, @Param("valor") String valor );
 	
+	 
+	 @Query(value= "SELECT COLUMN_NAME, DATA_TYPE\r\n"
+	 		+ "FROM `INFORMATION_SCHEMA`.`COLUMNS` \r\n"
+	 		+ "WHERE `TABLE_SCHEMA`='db_volt' \r\n"
+	 		+ "    AND `TABLE_NAME`='documentos';", nativeQuery=true)
+	 List<Documento> buscarTodo();
+	 
 	
-	//List<Documento> Search(String Columna, String Valor);
-
 }
